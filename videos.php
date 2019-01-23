@@ -14,7 +14,7 @@
       }
       else
       {
-        $count= 10;
+        $count= 20;
       }
       if (isset($_GET["offset"]))
       {
@@ -73,7 +73,7 @@
         <div class="col-sm-3">
         </div>
         <div class="col-sm-6">
-            <form action="index.php">
+            <form action="images.php">
                 <div class="input-group input-group-lg">
                         <? if ($term== '') {
                         echo '<input class="form-control" id="miBusqueda" name="q" type="text" placeholder="Search the web while fixxing global issues" aria-label="Search">';
@@ -95,6 +95,7 @@
    </div>
    <?
 
+
    if ($term != '')
    {
    // NOTE: Be sure to uncomment the following line in your php.ini file.
@@ -105,13 +106,14 @@
    // **********************************************
 
    // Replace the accessKey string value with your valid access key.
-   $accessKey = '';
+   $accessKey = '071eace0a1174e259ce82389fd42c14c';
 
    // Verify the endpoint URI.  At this writing, only one endpoint is used for Bing
    // search APIs.  In the future, regional endpoints may be available.  If you
    // encounter unexpected authorization errors, double-check this value against
    // the endpoint for your Bing Web search instance in your Azure dashboard.
-   $endpoint = 'https://api.cognitive.microsoft.com/bing/v7.0/search';
+  // $endpoint = 'https://api.cognitive.microsoft.com/bing/v7.0/search';
+   $endpoint = 'https://api.cognitive.microsoft.com/bing/v7.0/videos/search';
    //$endpoint1 = 'https://api.cognitive.microsoft.com/bing/v7.0/images/search';
    //$endpoint = 'https://api.cognitive.microsoft.com/bing/v7.0/images/search';
    //$endpoint = 'https://api.cognitive.microsoft.com/bing/v7.0/images/search';
@@ -164,10 +166,12 @@
        //echo  json_encode(json_decode($json), JSON_PRETTY_PRINT);
        //echo('<ul ID="resultList">');
        $jsonobj = json_decode($json);
+
     //   print '<pre>';
-    //print_r($jsonobj);
-    //print '</pre>';
-    }
+//print_r($jsonobj);
+//print '</pre>';
+
+
    ?>
 
    <div class="row">
@@ -179,7 +183,7 @@
                {
            echo '<div class="alert alert-primary" role="alert">Searching the web for: '
            . $term .'</div>';
-           echo '<span class="float-right"><span class="badge badge-pill badge-dark">'.$jsonobj->webPages->totalEstimatedMatches.'</span> Web served</span>';
+           echo '<span class="float-right"><span class="badge badge-pill badge-dark">'.$jsonobj->totalEstimatedMatches.'</span> Web served</span>';
 
            echo '<span class="float-light">Page: <span class="badge badge-pill">'.($offset/10+1).'</span></span>';
          }
@@ -200,13 +204,13 @@
       echo'<div class="col-sm-4">';
       echo'   <ul class="nav justify-content-center">
     <li class="nav-item">
-      <a class="nav-link active" href="#">web</a>
+      <a class="nav-link disabled" href="index.php?q='.$term.'">web</a>
     </li>
     <li class="nav-item">
       <a class="nav-link disabled" href="images.php?q='.$term.'">images</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link disabled" href="videos.php?q='.$term.'">video</a>
+      <a class="nav-link" href="#">video</a>
     </li>
     </ul>';
       echo '</div>';
@@ -215,7 +219,6 @@
     echo '</div>';
   }
     ?>
-
     <?
     if( $term != "")
 
@@ -232,7 +235,7 @@
             if (($offset) != 0) {echo ($offset-10);} else {echo ($offset);}
             echo '"><span class="fas fa-arrow-alt-circle-left"><span/></a>';
             echo '</li>';
-            $lastpage = $jsonobj->webPages->totalEstimatedMatches;
+            $lastpage = $jsonobj->totalEstimatedMatches;
             if ($offset >= $lastpage)
             {
 
@@ -253,7 +256,7 @@
               $page = $i;
               echo '<a class="nav-link ';
               if (($start) != $i) echo 'disabled';
-              echo '" href="index.php?q='.$term.'&offset='.$salto.'">'.($salto/10+1).'</a>';
+              echo '" href="videos.php?q='.$term.'&offset='.$salto.'">'.($salto/10+1).'</a>';
               echo '</li>';
 
             }
@@ -266,14 +269,14 @@
                $page = $i;
                echo '<a class="nav-link ';
               if (($start) != $i) echo 'disabled';
-               echo '" href="index.php?q='.$term.'&offset='.$salto.'">'.($salto/10+1).'</a>';
+               echo '" href="videos.php?q='.$term.'&offset='.$salto.'">'.($salto/10+1).'</a>';
                echo '</li>';
 
              }
            }
             echo '<li class="nav-item">';
 
-            echo '<a class="nav-link" href="index.php?q='.$term.'&offset='.($offset+10).'"><span class="fas fa-arrow-alt-circle-right"><span/></a>';
+            echo '<a class="nav-link" href="videos.php?q='.$term.'&offset='.($offset+10).'"><span class="fas fa-arrow-alt-circle-right"><span/></a>';
             echo '</li>';
 
             //$lastpage = $jsonobj->webPages->totalEstimatedMatches - 10;
@@ -297,32 +300,62 @@
   if( $term != "")
 
     {
-        echo '<ul class="list-group" style="border: none">';
+
+        echo '<table class="table table-borderless">';
+        echo  '<tbody>';
 
 
-           foreach($jsonobj->webPages->value as $contenido)
+
+
+      $cont = 1;
+
+
+          foreach($jsonobj->value as $contenido)
+          {
+            if ($cont ==1) {echo '<tr>';}
+
+
+          echo '<td>';
+          echo '<a href="';
+
+          print_r($contenido->hostPageUrl);
+          echo '">';
+          echo '<img width="150" height="auto" src="';
+          print_r($contenido->thumbnailUrl);
+          echo '"></img>';
+          echo '</a>';
+          echo '</td>';
+
+
+
+          if ($cont%5 == 0) echo '</tr>';
+            if ($cont%5 == 0) echo '<tr>';
+          $cont = $cont +1;
+         }
+         echo '  </tbody>
+
+
+         </table>';
+
+
+      /*     foreach($jsonobj->value as $contenido)
             {
 
 
                 echo '<li class="list-group-item" style="border: none">';
-                echo '<a href="';
-                print_r($contenido->url);
+                echo '<img src="';
+                print_r($contenido->thumbnailUrl);
                 echo '">';
-                print_r($contenido->name);
+                echo '</img>';
 
-                echo '</br>';
-                echo '<small class="text-success">';
-                print_r($contenido->url);
-                echo '</a></small>';
-                echo '</br>';
-                echo '<small class="text-success">';
-                print_r($contenido->snippet);
-                echo '</a></small>';
+
+
+
                 echo '</li>';
 
 
             }
-            echo '</ul>';
+            echo '</ul>'; */
     echo '</div>';
     echo '<div class="col-sm-3">';
 
@@ -347,7 +380,7 @@
  }
 }
 
-
+}
 
 ?>
 
