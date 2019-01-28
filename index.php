@@ -119,7 +119,7 @@
    // **********************************************
 
    // Replace the accessKey string value with your valid access key.
-      $accessKey = '071eace0a1174e259ce82389fd42c14c';
+     
 
    // Verify the endpoint URI.  At this writing, only one endpoint is used for Bing
    // search APIs.  In the future, regional endpoints may be available.  If you

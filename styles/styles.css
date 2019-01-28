@@ -10,7 +10,7 @@ p {margin-bottom:0px;}
 .text-success a {color: #006621;}
 #logo {justify-content: center;}
 #logo img {width:32vw; padding:3vw;}
-form {width:42vw;form: min-width: 360px;}
+form {width:42vw;min-width: 360px;}
 .container-fluid {margin-top:15vh;}
 .search {width: 30px;height: 30px;}
 .toggle {background:red;}
