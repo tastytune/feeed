@@ -45,54 +45,68 @@
 ?>
 <head>
   <meta charset="utf-8">
-
   <title>Feeeed</title>
   <meta name="description" content="Search Engine that shares the 80% of the income in feeding the infancy">
   <meta name="author" content="Friendas and Enthusiast of emerging eco economies Development ">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="img/favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+<link rel="manifest" href="img/favicon/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+  <link rel="search" type="application/opensearchdescription+xml" title="feeeed.org" href="http://www.feeeed.org/opensearch.xml">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="styles/styles.css">
+
 </head>
 
 <body>
-  <div class="container-fluid" style="margin-top:5%;">
-          <div class="row">
-                  <div class="col-sm-4">
+  <div class="container-fluid">
 
+ <!-- <a href="javascript:if(typeof(window.external)=='object'){try{window.external.AddSearchProvider('http://www.feeeed.org/opensearch.xml');}catch(e){alert('Your%20browser%20does%20not%20support%20OpenSearch%21');}};void(0);">Install feeeed.org Search Plugin</a>-->
+         
+        
+                  <div class="flex" id="logo">
+                    <a href="index.php"><img src="img/feeeed.svg"></a>
                   </div>
-                  <div class="col-sm-4">
-                    <a href="index.php"><img style="width:100%" class="logo" src="img/feeeed.svg"></img></a>
-                  </div>
-                  <div class="col-sm-4">
+       
 
-                  </div>
-          </div>
-  <div class="row">
-        <div class="col-sm-3">
-        </div>
-        <div class="col-sm-6">
+    
+        <div class="flex justify-content-center">
             <form action="index.php">
                 <div class="input-group input-group-lg">
                         <? if ($term== '') {
-                        echo '<input class="form-control" id="miBusqueda" name="q" type="text" placeholder="Search the web while fixxing global issues" aria-label="Search">';
+                        echo '<input class="form-control" id="miBusqueda" name="q" type="text" placeholder="search the web to fight the hunger" aria-label="Search">';
                       }
                       else {
                         echo '<input class="form-control" id="miBusqueda" name="q" type="text" placeholder="'.$term.'" aria-label="Search">';
                       }
                     ?>
                         <div class="input-group-append">
-                            <button type="submit" class="btn btn-outline-primary">Feeeed</button>
+                            <button type="submit" class="btn" id="search"> <img class="search" src="img/icon_search.svg"></button>
 
                         </div>
 
                 </div>
            </form>
         </div>
-        <div class="col-sm-3">
-        </div>
-   </div>
+
    <?
 
    if ($term != '')
@@ -105,7 +119,7 @@
    // **********************************************
 
    // Replace the accessKey string value with your valid access key.
-   $accessKey = '';
+      $accessKey = '071eace0a1174e259ce82389fd42c14c';
 
    // Verify the endpoint URI.  At this writing, only one endpoint is used for Bing
    // search APIs.  In the future, regional endpoints may be available.  If you
@@ -310,14 +324,14 @@
                 echo '">';
                 print_r($contenido->name);
 
-                echo '</br>';
-                echo '<small class="text-success">';
+               
+                echo '<p class="text-success">';
                 print_r($contenido->url);
-                echo '</a></small>';
-                echo '</br>';
-                echo '<small class="text-success">';
+                echo '</a></p>';
+             
+                echo '<p class="">';
                 print_r($contenido->snippet);
-                echo '</a></small>';
+                echo '</a></p>';
                 echo '</li>';
 
 
@@ -329,7 +343,7 @@
     echo '</div>';
     echo '</div>';
 
-    echo '<div class="row">
+  echo '<div class="row">
          <div class="col-sm-4">
 
          </div>
@@ -340,7 +354,14 @@
            <a href="index.php"><img style="width:100%" class="logo" src="img/back.png"></img></a>
          </div>
 
-         </div>';
+         </div>
+  <style>
+   #logo{position: absolute;width: 24vw;top: 0px;}
+   #logo img {width: 15vw;padding: 0vw;}
+   .container-fluid {margin-top: 1vh;}
+
+  </style>
+';
 
 
    echo '</div>';  // End of container-fluid
@@ -350,7 +371,6 @@
 
 
 ?>
-
 
 
 

@@ -1,0 +1,10 @@
+<OpenSearchDescription>
+<ShortName>feeeed</ShortName>
+<Description>Search Feeeed</Description>
+<InputEncoding>UTF-8</InputEncoding>
+<Contact>info@feeeed.org</Contact>
+<LongName>Feeeed Search</LongName>
+ <Image width="16" height="16" type="image/x-icon">http://www.feeeed.org/img/favicon</Image>
+<Url type="text/html" method="get" template="index.php?q={searchTerms}&amp;q={searchTerms}&amp;sourceid=opensearch"/>
+
+</OpenSearchDescription>

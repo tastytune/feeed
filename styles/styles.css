@@ -1,0 +1,39 @@
+body {background: white;}
+a {
+    font-size: 18px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #1a0dab;
+}
+p {margin-bottom:0px;}
+.text-success {color: #4a4a4a;}
+.text-success a {color: #006621;}
+#logo {justify-content: center;}
+#logo img {width:32vw; padding:3vw;}
+form {width:42vw;form: min-width: 360px;}
+.container-fluid {margin-top:15vh;}
+.search {width: 30px;height: 30px;}
+.toggle {background:red;}
+
+
+.btn {
+border-top: 1px solid #ced4da;
+border-right: 1px solid #ced4da;
+border-bottom: 1px solid #ced4da;}
+
+
+    .flex {display: flex;}
+    .flex_row {flex-flow: row;}
+    .flex_column {flex-flow: column;}
+    .flex-wrap {flex-wrap: wrap;}
+    .flex-justify-center {justify-content: center;}
+    .space-around{justify-content: space-around;}
+    .space-end{justify-content: flex-end ;}   
+    .flex-align-center{  align-items: center;}
+    .flex-align-end { align-items: flex-end ;}
+    .align-self-center {align-self:center; }
+
+@media only screen and (max-device-width:600px) {
+ form {width:90vw;}
+ .logo img { width: 96vw;padding: 6vw;}
+}
