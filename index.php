@@ -354,8 +354,8 @@
 .justify-center {display: flex;justify-content: center;}
 .device_header {flex-flow:row; display:flex; justify-content: flex-start;align-items: center;}
 .number_served {display:none;}
-.search_xs {width:68vw;}
-.nav-link {padding: .5rem 0.4rem;}
+@media only screen and (max-device-width:600px) {
+.search_xs {width:68vw;}}
 
 
 
