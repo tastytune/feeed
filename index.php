@@ -81,14 +81,14 @@
 
  <!-- <a href="javascript:if(typeof(window.external)=='object'){try{window.external.AddSearchProvider('http://www.feeeed.org/opensearch.xml');}catch(e){alert('Your%20browser%20does%20not%20support%20OpenSearch%21');}};void(0);">Install feeeed.org Search Plugin</a>-->
          
-        
+        <div class="device_header">
                   <div class="flex" id="logo">
                     <a href="index.php"><img src="img/feeeed.svg"></a>
                   </div>
        
 
     
-        <div class="flex justify-content-center">
+        <div class="flex justify-content-center search_xs">
             <form action="index.php">
                 <div class="input-group input-group-lg">
                         <? if ($term== '') {
@@ -106,6 +106,7 @@
                 </div>
            </form>
         </div>
+  </div>
 
    <?
 
@@ -119,7 +120,7 @@
    // **********************************************
 
    // Replace the accessKey string value with your valid access key.
-     
+      $accessKey = '071eace0a1174e259ce82389fd42c14c';
 
    // Verify the endpoint URI.  At this writing, only one endpoint is used for Bing
    // search APIs.  In the future, regional endpoints may be available.  If you
@@ -184,10 +185,9 @@
     }
    ?>
 
-   <div class="row">
-         <div class="col-sm-3">
-         </div>
-         <div class="col-sm-6">
+   <div class="row justify-center">
+       
+         <div class="col-sm-6 number_served">
              <? if ($term != "")
 
                {
@@ -201,17 +201,15 @@
          ?>
 
          </div>
-         <div class="col-sm-3">
-         </div>
+     
     </div>
     <?
     if( $term != "")
 
       {
-    echo '<div class="row">';
-    echo'<div class="col-sm-4">
-    </div>';
-      echo'<div class="col-sm-4">';
+    echo '<div class="row justify-center">';
+    
+      echo'<div>';
       echo'   <ul class="nav justify-content-center">
     <li class="nav-item">
       <a class="nav-link active" href="#">web</a>
@@ -224,8 +222,7 @@
     </li>
     </ul>';
       echo '</div>';
-        echo'<div class="col-sm-4">
-        </div>';
+       
     echo '</div>';
   }
     ?>
@@ -235,10 +232,9 @@
 
       {
 
-    echo '<div class="row">';
-          echo'<div class="col-sm-4">
-          </div>';
-            echo'<div class="col-sm-4">';
+    echo '<div class="row justify-center">';
+       
+            echo'<div>';
             echo '<ul class="nav justify-content-center">';
 
             echo '<li class="nav-item">';
@@ -296,15 +292,13 @@
             echo'
               </ul>';
             echo '</div>';
-            echo'<div class="col-sm-4">
-            </div>';
+        
     echo '</div>';
   }
     ?>
 <div class="row">
-  <div class="col-sm-3">
-  </div>
-  <div class="col-sm-6">
+
+  <div class="col-lg-12">
 
  <?
 
@@ -338,9 +332,7 @@
             }
             echo '</ul>';
     echo '</div>';
-    echo '<div class="col-sm-3">';
 
-    echo '</div>';
     echo '</div>';
 
   echo '<div class="row">
@@ -356,9 +348,16 @@
 
          </div>
   <style>
-   #logo{position: absolute;width: 24vw;top: 0px;}
-   #logo img {width: 15vw;padding: 0vw;}
+   #logo{width: 21vw;}
+   #logo img {width: 20vw;padding: 0vw;}
    .container-fluid {margin-top: 1vh;}
+.justify-center {display: flex;justify-content: center;}
+.device_header {flex-flow:row; display:flex; justify-content: flex-start;align-items: center;}
+.number_served {display:none;}
+.search_xs {width:68vw;}
+.nav-link {padding: .5rem 0.4rem;}
+
+
 
   </style>
 ';
