@@ -10,7 +10,7 @@ p {margin-bottom:0px;}
 .text-success a {color: #006621;}
 #logo {justify-content: center;}
 #logo img {width:32vw; padding:3vw;}
-form {width:42vw;form: min-width: 360px;}
+form {width:42vw; min-width: 360px;}
 .container-fluid {margin-top:15vh;}
 .search {width: 30px;height: 30px;}
 .toggle {background:red;}
@@ -40,7 +40,11 @@ border-bottom: 1px solid #ced4da;}
     .align-self-center {align-self:center; }
 
 @media only screen and (max-device-width:600px) {
- form {width:90vw;}
- #logo img { width: 96vw;padding: 6vw;}
-.device_header {flex-flow:column; display:flex;}
+ form {width:90vw;min-width: 200px;}
+ #logo {width: 28vw;justify-content: flex-start;}
+ #logo img { width: 27vw;padding: 6vw;}
+.device_header {flex-flow:column; display:flex;justify-content: space-between;}
+.container-fluid {padding-left: 0px;}
+.nav-link {padding: .5rem 0.5rem;}
+.list-group-item {padding: 0.55rem 0.55rem;}
 }
